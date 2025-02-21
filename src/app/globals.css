@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
+/* @layer base {
   :root {
     --background: hsl(0, 0%, 100%);
     --foreground: hsl(240, 10%, 3.9%);
@@ -29,8 +29,8 @@
     --chart-4: hsl(43, 74%, 66%);
     --chart-5: hsl(27, 87%, 67%);
     --radius: 0.5rem;
-  }
-
+  } */
+/* 
   .dark {
     --background: hsl(240, 10%, 3.9%);
     --foreground: hsl(0, 0%, 98%);
@@ -57,7 +57,7 @@
     --chart-4: hsl(280, 65%, 60%);
     --chart-5: hsl(340, 75%, 55%);
   }
-}
+} */
 
 @layer base {
   * {
