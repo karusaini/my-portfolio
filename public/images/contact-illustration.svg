@@ -1,0 +1,19 @@
+<!-- Save this as /public/images/contact-illustration.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="600" y2="0">
+      <stop offset="0%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#9333EA"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="400" fill="#F3F4F6"/>
+  <!-- Envelope Body -->
+  <rect x="50" y="100" width="500" height="200" rx="20" fill="#fff" stroke="#E5E7EB" stroke-width="4"/>
+  <!-- Envelope Flap (Solid) -->
+  <path d="M50 100 L300 250 L550 100" fill="none" stroke="url(#grad)" stroke-width="6"/>
+  <!-- Envelope Flap (Dashed for detail) -->
+  <path d="M50 100 L300 300 L550 100" fill="none" stroke="url(#grad)" stroke-width="4" stroke-dasharray="10 10"/>
+  <!-- Footer Text on the Illustration -->
+  <text x="300" y="360" text-anchor="middle" fill="#374151" font-size="24" font-family="Arial, sans-serif">Get in Touch</text>
+</svg>
