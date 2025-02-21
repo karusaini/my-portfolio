@@ -73,7 +73,7 @@ export default function SkillsSection() {
           Skills
         </h2>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-          Technologies I've worked with
+          Technologies I&apos;ve worked with
         </p>
       </motion.div>
 

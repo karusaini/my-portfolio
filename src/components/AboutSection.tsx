@@ -17,12 +17,12 @@ export default function AboutSection() {
           About Me
         </h2>
         <p className="mt-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-left md:text-center">
-          I'm a frontend developer with 2 years of learning experience and 6
-          months of hands-on experience in HTML, CSS, JavaScript, React.js,
-          Next.js, and Supabase. I've built projects like a Zoom clone and
-          Netflix Clone, focusing on smooth, user-friendly web experiences. I'm
-          passionate about learning, growing, and contributing to innovative web
-          solutions.
+          I&apos;m a frontend developer with 2 years of learning experience and
+          6 months of hands-on experience in HTML, CSS, JavaScript, React.js,
+          Next.js, and Supabase. I&apos;ve built projects like a Zoom clone and
+          Netflix Clone, focusing on smooth, user-friendly web experiences.
+          I&apos;m passionate about learning, growing, and contributing to
+          innovative web solutions.
         </p>
       </motion.div>
 
@@ -41,8 +41,8 @@ export default function AboutSection() {
           Looking for a Creative Frontend Developer?
         </h3>
         <p className="mb-6">
-          Let's collaborate to create something amazing. I'm ready to take on
-          new challenges and bring innovative ideas to life.
+          Let&apos;s collaborate to create something amazing. I&apos;m ready to
+          take on new challenges and bring innovative ideas to life.
         </p>
         <div className="text-center">
           <a

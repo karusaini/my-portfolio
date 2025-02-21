@@ -8,7 +8,7 @@ export default function Footer() {
         {/* Logo & Description */}
         <div>
           <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
-            Karina's Portfolio
+            Karina&apos;s Portfolio
           </h2>
           <p className="mt-3 text-gray-600 text-sm">
             Passionate Web Developer | Creating modern & responsive web apps.

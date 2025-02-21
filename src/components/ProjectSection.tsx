@@ -33,7 +33,7 @@ export default function ProjectsTimelineSection() {
     {
       title: "Dashboard Manage ",
       description:
-        "I've developed an advanced dashboard leveraging the latest technologies like React.js and Tailwind CSS, seamlessly integrated with Firebase for real-time data management.",
+        "I&apos;ve developed an advanced dashboard leveraging the latest technologies like React.js and Tailwind CSS, seamlessly integrated with Firebase for real-time data management.",
       liveDemo: "https://dashboard-17cf6.web.app/",
       github: "https://github.com/karusaini/dashboard",
       image: "/dashboard-clone.jpg",

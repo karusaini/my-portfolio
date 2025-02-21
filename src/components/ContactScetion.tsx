@@ -60,8 +60,8 @@ export default function ContactSection() {
         >
           <h2 className="text-4xl font-bold text-gray-800">Contact Me</h2>
           <p className="mt-4 text-lg text-gray-600">
-            I'd love to hear from you. Fill out the form and I'll get in touch
-            soon!
+            I&apos;d love to hear from you. Fill out the form and I&apos;ll get
+            in touch soon!
           </p>
         </motion.div>
 

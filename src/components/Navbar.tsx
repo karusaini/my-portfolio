@@ -29,7 +29,7 @@ export default function Navbar() {
           href="/"
           className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600"
         >
-          Karina's Portfolio
+          Karina&apos;s Portfolio
         </Link>
 
         {/* Navigation Links */}

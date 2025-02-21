@@ -47,7 +47,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
         >
-          Hi, I'm{" "}
+          Hi, I&apos;m{" "}
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
             Karina
           </span>{" "}
