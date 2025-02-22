@@ -64,16 +64,15 @@
     border-color: hsl(var(--border));
   }
 
-  /* body {
+  body {
     @apply bg-background text-foreground font-sans;
     margin: 0;
     padding: 0;
-  } */
+  }
 
   html,
   body {
     width: 100%;
-    overflow-x: hidden;
   }
 
   *,
