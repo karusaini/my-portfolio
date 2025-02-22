@@ -561,7 +561,7 @@ video {
   --card-foreground: 240 10% 3.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 3.9%;
-  --primary: 240 5.9% 10%;
+  --primary: hsl(240, 5.9%, 10%);
   --primary-foreground: 0 0% 98%;
   --secondary: 240 4.8% 95.9%;
   --secondary-foreground: 240 5.9% 10%;
@@ -586,13 +586,11 @@ video {
   border-color: hsl(var(--border));
 }
 
-body {
-  background-color: hsl(var(--background));
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  color: hsl(var(--foreground));
-  margin: 0;
-  padding: 0;
-}
+/* body {
+    @apply bg-background text-foreground font-sans;
+    margin: 0;
+    padding: 0;
+  } */
 
 html,
   body {
@@ -1071,7 +1069,8 @@ html,
 }
 
 .bg-background {
-  background-color: hsl(var(--background));
+  --tw-bg-opacity: 1;
+  background-color: hsl(0 0% 100% / var(--tw-bg-opacity, 1));
 }
 
 .bg-black\/80 {
@@ -1095,6 +1094,11 @@ html,
 .bg-gray-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+}
+
+.bg-primary {
+  --tw-bg-opacity: 1;
+  background-color: hsl(240 5.9% 10% / var(--tw-bg-opacity, 1));
 }
 
 .bg-transparent {
@@ -1347,7 +1351,8 @@ html,
 }
 
 .text-foreground {
-  color: hsl(var(--foreground));
+  --tw-text-opacity: 1;
+  color: hsl(240 10% 3.9% / var(--tw-text-opacity, 1));
 }
 
 .text-gray-500 {
@@ -1393,6 +1398,11 @@ html,
 .text-pink-500 {
   --tw-text-opacity: 1;
   color: rgb(236 72 153 / var(--tw-text-opacity, 1));
+}
+
+.text-primary {
+  --tw-text-opacity: 1;
+  color: hsl(240 5.9% 10% / var(--tw-text-opacity, 1));
 }
 
 .text-purple-500 {
@@ -1477,7 +1487,7 @@ html,
 }
 
 .ring-offset-background {
-  --tw-ring-offset-color: hsl(var(--background));
+  --tw-ring-offset-color: hsl(0, 0%, 100%);
 }
 
 .blur-3xl {
@@ -1573,7 +1583,8 @@ html,
 }
 
 .file\:text-foreground::file-selector-button {
-  color: hsl(var(--foreground));
+  --tw-text-opacity: 1;
+  color: hsl(240 10% 3.9% / var(--tw-text-opacity, 1));
 }
 
 .hover\:scale-105:hover {
@@ -1585,6 +1596,10 @@ html,
 .hover\:bg-gray-700:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-primary\/90:hover {
+  background-color: hsl(240 5.9% 10% / 0.9);
 }
 
 .hover\:from-blue-600:hover {

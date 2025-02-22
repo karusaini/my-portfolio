@@ -10,9 +10,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "hsl(var(--background))",
-        border: "hsl(var(--border))",
-        foreground: "hsl(var(--foreground))",
+        primary: "hsl(240, 5.9%, 10%)",
+        background: "hsl(0, 0%, 100%)",
+        border: "hsl(240, 5.9%, 90%)",
+        foreground: "hsl(240, 10%, 3.9%)",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
