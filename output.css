@@ -1078,7 +1078,7 @@ html,
 }
 
 .bg-card {
-  background-color: hsl(var(--card));
+  background-color: var(--card);
 }
 
 .bg-gray-100 {
@@ -1347,7 +1347,7 @@ html,
 }
 
 .text-card-foreground {
-  color: hsl(var(--card-foreground));
+  color: var(--card-foreground);
 }
 
 .text-foreground {

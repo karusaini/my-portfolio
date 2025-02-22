@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function ProjectsTimelineSection() {
@@ -28,7 +28,7 @@ export default function ProjectsTimelineSection() {
         "A full-featured e-commerce application developed using Next.js and Stripe API. Offers seamless product browsing and secure payments.",
       liveDemo: "https://student-management-gray-seven.vercel.app/",
       github: "https://github.com/karusaini/student-management/tree/main",
-      image: "/studentt-clone.jpg",
+      image: "/student-clone.jpg",
     },
     {
       title: "Dashboard Manage ",
