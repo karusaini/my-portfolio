@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import Lottie from "lottie-react";
+import animationData from "../../public/lotties/contact.json";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -12,17 +17,14 @@ export default function ContactSection() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  // Handle Input Changes
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  // Handle Form Submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -31,7 +33,6 @@ export default function ContactSection() {
       });
 
       const data = await res.json();
-
       if (data.success) {
         setSubmitted(true);
         setTimeout(() => {
@@ -39,120 +40,94 @@ export default function ContactSection() {
           setFormData({ name: "", email: "", message: "" });
         }, 3000);
       } else {
-        alert("Failed to send message. Try again later.");
+        alert("Failed to send message.");
       }
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    } catch (err) {
+      console.error(err);
     }
   };
 
   return (
-    <section id="contact" className="py-24 bg-gray-50 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-white to-gray-200 opacity-70"></div>
+    <section id="contact" className="py-24 px-6 bg-background">
+      <motion.div
+        className="text-center max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-4xl font-bold text-foreground">Contact Me</h2>
+        <p className="text-muted-foreground mt-4 text-lg">
+          Let’s get in touch. I usually reply within 24 hours.
+        </p>
+      </motion.div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Section Header */}
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        {/* Left: Lottie Animation */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center"
+          className="w-full"
         >
-          <h2 className="text-4xl font-bold text-gray-800">Contact Me</h2>
-          <p className="mt-4 text-lg text-gray-600">
-            I&apos;d love to hear from you. Fill out the form and I&apos;ll get
-            in touch soon!
-          </p>
+          <Lottie
+            animationData={animationData}
+            loop
+            autoplay
+            className="max-w-md mx-auto"
+          />
         </motion.div>
 
-        {/* Contact Form & Illustration */}
-        <div className="mt-12 flex flex-col md:flex-row items-center gap-12">
-          {/* Left: Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="w-full md:w-1/2 bg-white/90 p-8 rounded-2xl shadow-lg border border-gray-200"
-          >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Email
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
-              <div className="text-center">
-                <button
-                  type="submit"
-                  className="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium text-base hover:from-blue-600 hover:to-purple-700 transition-all"
-                >
-                  {submitted ? "Message Sent!" : "Send Message"}
-                </button>
-              </div>
-            </form>
-          </motion.div>
-
-          {/* Right: Illustration */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="w-full md:w-1/2 flex justify-center"
-          >
-            <Image
-              src="/images/contact-illustration.svg"
-              alt="Contact Illustration"
-              width={400}
-              height={400}
-              className="w-full max-w-md"
-            />
-          </motion.div>
-        </div>
+        {/* Right: Contact Form */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <Label htmlFor="name">Name</Label>
+              <Input
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div>
+              <Label htmlFor="message">Message</Label>
+              <Textarea
+                id="message"
+                name="message"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Write your message..."
+                required
+              />
+            </div>
+            <Button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+            >
+              {submitted ? "Message Sent!" : "Send Message"}
+            </Button>
+          </form>
+        </motion.div>
       </div>
     </section>
   );

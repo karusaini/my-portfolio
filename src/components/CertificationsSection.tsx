@@ -5,13 +5,15 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import {
   Dialog,
-  DialogContent,
+  DialogPortal,
+  DialogOverlay,
+  DialogContent as BaseDialogContent,
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "@/components/ui/dialog"; // Adjust import path as needed
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
-// Define an interface for a Certification
 interface Certification {
   title: string;
   provider: string;
@@ -45,10 +47,8 @@ export default function CertificationsSection() {
       date: "Feb 2025",
       image: "/certificates/fiverr-certificate.jpg",
     },
-    // Add more certifications as needed.
   ];
 
-  // State to control the modal and the currently selected certificate.
   const [open, setOpen] = useState(false);
   const [selectedCertificate, setSelectedCertificate] =
     useState<Certification | null>(null);
@@ -61,9 +61,9 @@ export default function CertificationsSection() {
   return (
     <section
       id="certifications"
-      className="py-16 px-6 bg-gray-50 dark:bg-gray-800"
+      className="py-16 px-6 bg-gray-50 dark:bg-background"
     >
-      {/* Section Header */}
+      {/* Header */}
       <motion.div
         className="max-w-5xl mx-auto text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -71,84 +71,90 @@ export default function CertificationsSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-4xl font-bold text-foreground dark:text-white">
           Certifications
         </h2>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+        <p className="mt-4 text-lg text-muted-foreground">
           Professional certifications that validate my skills and expertise.
         </p>
       </motion.div>
 
-      {/* Certifications Grid */}
+      {/* Grid */}
       <div className="mt-12 max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-8">
         {certifications.map((cert, index) => (
           <motion.div
             key={index}
-            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-6 shadow hover:shadow-lg transition-all duration-300 text-center"
+            className="bg-card border border-border rounded-lg p-6 shadow hover:shadow-lg transition-all duration-300 text-center"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             whileHover={{ scale: 1.02 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+            <h3 className="text-2xl font-semibold text-foreground">
               {cert.title}
             </h3>
-            {/* If provider is Udemy, make it a link */}
-            {cert.provider === "Udemy" ? (
-              <a
-                href="https://www.udemy.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 block text-lg text-blue-500 hover:underline"
-              >
-                {cert.provider}
-              </a>
-            ) : (
-              <p className="mt-2 text-lg text-blue-500">{cert.provider}</p>
-            )}
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-              {cert.date}
-            </p>
+            <a
+              href="https://www.udemy.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 block text-lg text-primary hover:underline"
+            >
+              {cert.provider}
+            </a>
+            <p className="mt-1 text-sm text-muted-foreground">{cert.date}</p>
             <div className="mt-4 text-center">
-              <button
+              <Button
                 onClick={() => handleViewCertificate(cert)}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 px-3 py-2 rounded text-white transition-all hover:scale-105"
+                className="bg-blue-600 hover:bg-blue-700 text-white"
               >
                 View Certificate
-              </button>
+              </Button>
             </div>
           </motion.div>
         ))}
       </div>
 
-      {/* Certificate Modal */}
+      {/* Animated Dialog */}
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-[500px] mx-auto text-center">
-          <DialogHeader>
-            <DialogTitle className="text-center">Certificate</DialogTitle>
-            <DialogDescription className="text-center text-gray-900">
-              Here is the certificate. You can view it in full size.
-            </DialogDescription>
-          </DialogHeader>
-          {selectedCertificate && (
-            <div className="relative h-64 w-full my-4">
-              <Image
-                src={selectedCertificate.image}
-                alt={selectedCertificate.title}
-                fill
-                style={{ objectFit: "contain" }}
-                className="rounded-md"
-              />
-            </div>
-          )}
-          <button
-            onClick={() => setOpen(false)}
-            className="mt-4 w-full py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium text-base hover:from-blue-600 hover:to-purple-700 transition-all"
+        <DialogPortal>
+          <DialogOverlay className="fixed inset-0 bg-black/50 z-50 backdrop-blur-sm" />
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center px-4"
+            initial={{ opacity: 0, scale: 0.9, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 30 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
-            Close
-          </button>
-        </DialogContent>
+            <BaseDialogContent className="sm:max-w-[500px] w-full mx-auto text-center">
+              <DialogHeader>
+                <DialogTitle className="text-center">Certificate</DialogTitle>
+                <DialogDescription className="text-center text-foreground">
+                  Here is the certificate. You can view it in full size.
+                </DialogDescription>
+              </DialogHeader>
+
+              {selectedCertificate && (
+                <div className="relative h-64 w-full my-4">
+                  <Image
+                    src={selectedCertificate.image}
+                    alt={selectedCertificate.title}
+                    fill
+                    style={{ objectFit: "contain" }}
+                    className="rounded-md"
+                  />
+                </div>
+              )}
+
+              <Button
+                onClick={() => setOpen(false)}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              >
+                Close
+              </Button>
+            </BaseDialogContent>
+          </motion.div>
+        </DialogPortal>
       </Dialog>
     </section>
   );

@@ -2,87 +2,114 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className={`fixed top-4 left-0 w-full z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-7xl mx-auto px-4 py-3 rounded-xl backdrop-blur-md transition-all duration-300 ${
         scrolled
-          ? "bg-white dark:bg-gray-900 shadow-md py-2"
-          : "bg-transparent py-4"
+          ? "bg-white/90 dark:bg-gray-900/90 shadow-md"
+          : "bg-white/60 dark:bg-gray-800/50"
       }`}
     >
-      <div className="relative max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Advanced Logo */}
+      <div className="flex justify-between items-center">
+        {/* Logo */}
         <Link
           href="/"
-          className="text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600"
+          className="text-xl md:text-2xl font-bold text-blue-600 dark:text-white"
         >
           Karina&apos;s Portfolio
         </Link>
 
-        {/* Navigation Links */}
-        <ul className="hidden md:flex justify-center space-x-6 text-gray-700 dark:text-gray-200">
-          <li>
-            <a href="#about" className="hover:text-purple-600 transition">
-              About
-            </a>
-          </li>
-          <li>
-            <a href="#skills" className="hover:text-purple-600 transition">
-              Skills
-            </a>
-          </li>
-          <li>
-            <a href="#techstack" className="hover:text-purple-600 transition">
-              Tech Stack
-            </a>
-          </li>
-          <li>
-            <a href="#experience" className="hover:text-purple-600 transition">
-              Experience
-            </a>
-          </li>
-          <li>
-            <a href="#projects" className="hover:text-purple-600 transition">
-              Projects
-            </a>
-          </li>
+        {/* Desktop Navigation */}
+        <ul className="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-700 dark:text-gray-200">
+          {[
+            { label: "About", href: "#about" },
+            { label: "Skills", href: "#skills" },
+            { label: "Experience", href: "#experience" },
+            { label: "Projects", href: "#projects" },
+            { label: "Certifications", href: "#certifications" },
+            { label: "Contact", href: "#contact" },
+          ].map(({ label, href }) => (
+            <li key={label}>
+              <a href={href} className="hover:text-blue-600 transition-colors">
+                {label}
+              </a>
+            </li>
+          ))}
           <li>
             <a
-              href="#certifications"
-              className="hover:text-purple-600 transition"
+              href="/images/Karina_Saini_Resume.pdf"
+              download
+              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
             >
-              Certifications
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className="hover:text-purple-600 transition">
-              Contact
+              Resume
             </a>
           </li>
         </ul>
 
-        {/* Resume Button with Consistent Gradient */}
-        <a
-          href="/images/Karina_Saini_Resume.pdf"
-          download="Karina_Saini_Resume.pdf"
-          className="ml-4 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium text-base transition-all hover:scale-105"
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-gray-700 dark:text-gray-200"
+          aria-label="Toggle menu"
         >
-          Resume
-        </a>
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {/* Mobile Navigation */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.ul
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="md:hidden mt-4 space-y-4 bg-white dark:bg-gray-900 rounded-lg p-4 text-sm font-medium text-gray-900 dark:text-white shadow-md"
+          >
+            {[
+              { label: "About", href: "#about" },
+              { label: "Skills", href: "#skills" },
+              { label: "Experience", href: "#experience" },
+              { label: "Projects", href: "#projects" },
+              { label: "Certifications", href: "#certifications" },
+              { label: "Contact", href: "#contact" },
+            ].map(({ label, href }) => (
+              <li key={label}>
+                <a
+                  onClick={() => setIsOpen(false)}
+                  href={href}
+                  className="block hover:text-blue-600 transition-colors"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a
+                onClick={() => setIsOpen(false)}
+                href="/images/Karina_Saini_Resume.pdf"
+                download
+                className="block text-center bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors"
+              >
+                Resume
+              </a>
+            </li>
+          </motion.ul>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

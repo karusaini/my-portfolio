@@ -2,78 +2,152 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+const roles = [
+  "Frontend Engineer",
+  "Full Stack Developer",
+  "React & Next.js Specialist",
+];
 
 export default function HeroSection() {
+  const [currentRole, setCurrentRole] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentRole((prev) => (prev + 1) % roles.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative flex flex-col md:flex-row items-center justify-center min-h-screen px-6 md:px-12 overflow-hidden bg-gray-50">
-      {/* Animated Background Shape */}
-      <motion.div
-        className="absolute -z-10 w-96 h-96 rounded-full bg-gradient-to-r from-indigo-400 to-blue-500 opacity-30 blur-3xl"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 60, ease: "linear", repeat: Infinity }}
-      />
-
-      {/* Right: Profile Image (Mobile: on top) */}
-      <motion.div
-        className="order-1 mb-8 md:mb-0 md:order-2"
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.3 }}
-      >
+    <TooltipProvider>
+      <section className="relative flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-6 md:px-12 bg-gray-50 dark:bg-gray-900 overflow-hidden gap-12 md:gap-20 py-12">
+        {/* Animated Background Blob */}
         <motion.div
-          whileHover={{ scale: 1.05, rotate: 3 }}
-          className="rounded-full overflow-hidden shadow-2xl"
-        >
-          <Image
-            src="/profile.png"
-            alt="Karina's Profile"
-            width={300}
-            height={300}
-            className="object-cover"
-          />
-        </motion.div>
-      </motion.div>
+          className="absolute top-[-80px] left-[-80px] w-[400px] h-[400px] rounded-full bg-blue-300 dark:bg-blue-900 opacity-20 blur-3xl -z-10"
+          animate={{ x: 30, y: 30 }}
+          transition={{
+            repeat: Infinity,
+            repeatType: "reverse",
+            duration: 8,
+            ease: "easeInOut",
+          }}
+        />
 
-      {/* Left: Text Content (Mobile: below image) */}
-      <motion.div
-        className="order-2 max-w-lg text-center md:text-left md:order-1"
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.5 }}
-      >
-        <motion.h1
-          className="text-5xl font-bold text-gray-900 dark:text-white"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6 }}
+        {/* Left Content */}
+        <motion.div
+          className="max-w-xl text-center md:text-left"
+          initial={{ opacity: 0, x: -80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1 }}
         >
-          Hi, I&apos;m{" "}
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
-            Karina
-          </span>{" "}
-          👋
-        </motion.h1>
-        <motion.p
-          className="mt-6 text-xl text-gray-600 dark:text-gray-300"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white leading-tight">
+            Hi, I&apos;m{" "}
+            <span className="text-blue-600 dark:text-blue-400">Karina</span>
+          </h1>
+
+          <p className="mt-4 text-lg sm:text-xl text-gray-700 dark:text-gray-300 font-medium h-7">
+            {roles[currentRole]}
+          </p>
+
+          <p className="mt-6 text-gray-600 dark:text-gray-400 text-base sm:text-lg">
+            I build responsive full-stack applications with modern tools like
+            React, Next.js, TailwindCSS, and Node.js.
+          </p>
+
+          {/* Resume Button */}
+          <a href="/images/Karina_Saini_Resume.pdf" download>
+            <Button className="mt-8 bg-blue-600 hover:bg-blue-700 text-white">
+              📄 Download Resume
+            </Button>
+          </a>
+
+          {/* Social Icons with Tooltips */}
+          <div className="mt-6 flex justify-center md:justify-start gap-5 text-blue-600 dark:text-blue-400 text-xl">
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a
+                  href="https://www.linkedin.com/in/karina-saini"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaLinkedin className="hover:text-blue-800 transition" />
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>LinkedIn</TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a
+                  href="https://github.com/karusaini"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaGithub className="hover:text-black dark:hover:text-white transition" />
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>GitHub</TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <a href="mailto:hello@karinasaini.me">
+                  <FaEnvelope className="hover:text-red-500 transition" />
+                </a>
+              </TooltipTrigger>
+              <TooltipContent>Email</TooltipContent>
+            </Tooltip>
+          </div>
+        </motion.div>
+
+        {/* Right Profile Image */}
+        <motion.div
+          className="w-[260px] sm:w-[300px] md:w-[340px]"
+          initial={{ opacity: 0, x: 80 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 0.2 }}
         >
-          A passionate FullStack Developer building modern and interactive web
-          experiences.
-        </motion.p>
+          <div className="rounded-full overflow-hidden shadow-xl border-4 border-blue-100 dark:border-blue-800">
+            <Image
+              src="/profile.png"
+              alt="Karina's Profile"
+              width={400}
+              height={400}
+              className="object-cover w-full h-auto"
+            />
+          </div>
+        </motion.div>
+
+        {/* Scroll Down Indicator */}
+        {/* Scroll Down Indicator */}
         <motion.a
-          href="/images/Karina_Saini_Resume.pdf"
-          download="Karina_Saini_Resume.pdf"
-          className="mt-8 inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-600 text-white font-medium text-base hover:from-blue-600 hover:to-purple-700 transition-all"
-          whileHover={{ scale: 1.05 }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
+          href="#about"
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:text-gray-400 text-sm flex flex-col items-center cursor-pointer"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
         >
-          📄 Download Resume
+          <span>Scroll down</span>
+          <svg
+            className="w-4 h-4 mt-1"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <path d="M19 9l-7 7-7-7" />
+          </svg>
         </motion.a>
-      </motion.div>
-    </section>
+      </section>
+    </TooltipProvider>
   );
 }
