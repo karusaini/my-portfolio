@@ -30,7 +30,7 @@ export default function HeroSection() {
 
   return (
     <TooltipProvider>
-      <section className="relative flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-6 md:px-12 bg-gray-50 dark:bg-gray-900 overflow-hidden gap-12 md:gap-20 py-12">
+      <section className="relative flex flex-col-reverse md:flex-row items-center justify-center min-h-screen px-6 md:px-12 bg-gray-50 dark:bg-gray-900 overflow-hidden gap-12 md:gap-20 pt-[120px] pb-12">
         {/* Animated Background Blob */}
         <motion.div
           className="absolute top-[-80px] left-[-80px] w-[400px] h-[400px] rounded-full bg-blue-300 dark:bg-blue-900 opacity-20 blur-3xl -z-10"
@@ -117,7 +117,7 @@ export default function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <div className="rounded-full overflow-hidden shadow-xl border-4 border-blue-100 dark:border-blue-800">
+          <div className="rounded-full overflow-hidden shadow-xl border-4 border-blue-100 dark:border-blue-800 ">
             <Image
               src="/profile.png"
               alt="Karina's Profile"
