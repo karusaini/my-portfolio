@@ -128,11 +128,10 @@ export default function HeroSection() {
           </div>
         </motion.div>
 
-        {/* Scroll Down Indicator */}
-        {/* Scroll Down Indicator */}
+        {/* Desktop Scroll Indicator - Bottom center */}
         <motion.a
           href="#about"
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:text-gray-400 text-sm flex flex-col items-center cursor-pointer"
+          className="hidden md:flex absolute bottom-8 left-1/2 transform -translate-x-1/2 text-gray-500 dark:text-gray-400 text-sm flex-col items-center cursor-pointer"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
@@ -148,6 +147,23 @@ export default function HeroSection() {
           </svg>
         </motion.a>
       </section>
+      <motion.a
+        href="#about"
+        className="block md:hidden text-gray-500 dark:text-gray-400 text-sm text-center mt-[-46px]"
+        animate={{ y: [0, 6, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity }}
+      >
+        <span>Scroll down</span>
+        <svg
+          className="w-4 h-4 mt-1 mx-auto"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M19 9l-7 7-7-7" />
+        </svg>
+      </motion.a>
     </TooltipProvider>
   );
 }

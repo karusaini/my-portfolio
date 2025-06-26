@@ -138,7 +138,7 @@ export default function Projects() {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-black text-black hover:bg-black hover:text-white transition"
+                      className=" border border-black text-black hover:bg-black hover:text-white transition"
                     >
                       Code
                     </Button>
