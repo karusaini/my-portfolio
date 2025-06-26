@@ -39,7 +39,7 @@ export default function Footer() {
           <div className="flex justify-center md:justify-start space-x-5">
             {/* GitHub */}
             <a
-              href="https://github.com/your-github"
+              href="https://github.com/karusaini"
               target="_blank"
               rel="noopener noreferrer"
               className="group text-muted-foreground hover:text-blue-500 text-3xl transition"
@@ -49,7 +49,7 @@ export default function Footer() {
 
             {/* LinkedIn */}
             <a
-              href="https://linkedin.com/in/your-linkedin"
+              href="https://www.linkedin.com/in/karina-saini"
               target="_blank"
               rel="noopener noreferrer"
               className="group text-muted-foreground hover:text-blue-500 text-3xl transition"
@@ -59,7 +59,7 @@ export default function Footer() {
 
             {/* Fiverr */}
             <a
-              href="https://www.fiverr.com/your-fiverr"
+              href="https://www.fiverr.com/karina_saini"
               target="_blank"
               rel="noopener noreferrer"
               className="group text-muted-foreground hover:text-green-500 text-3xl transition"
