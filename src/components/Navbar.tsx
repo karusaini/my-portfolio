@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-7xl mx-auto px-4 py-3 rounded-xl backdrop-blur-md transition-all duration-300 ${
+      className={`fixed top-6 inset-x-4 md:inset-x-6 lg:inset-x-8 z-50 max-w-[100vw] mx-auto rounded-xl px-4 py-3 backdrop-blur-md transition-all duration-300 ${
         scrolled
           ? "bg-white/90 dark:bg-gray-900/90 shadow-md"
           : "bg-white/60 dark:bg-gray-800/50"
