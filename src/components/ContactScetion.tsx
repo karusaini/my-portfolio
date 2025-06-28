@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Lottie from "lottie-react";
 import animationData from "../../public/lotties/contact.json";
+import emailjs from "@emailjs/browser";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -25,15 +26,22 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
 
-      const data = await res.json();
-      if (data.success) {
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      message: formData.message,
+    };
+
+    try {
+      const result = await emailjs.send(
+        "service_i9jd2rl",
+        "template_v7c026c",
+        templateParams,
+        "xMXXAB6Gc1GWTKiOo"
+      );
+
+      if (result.text === "OK") {
         setSubmitted(true);
         setTimeout(() => {
           setSubmitted(false);
@@ -43,7 +51,8 @@ export default function ContactSection() {
         alert("Failed to send message.");
       }
     } catch (err) {
-      console.error(err);
+      console.error("EmailJS Error:", err);
+      alert("Something went wrong.");
     }
   };
 
@@ -63,7 +72,7 @@ export default function ContactSection() {
       </motion.div>
 
       <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-        {/* Left: Lottie Animation */}
+        {/* Lottie Animation */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -78,7 +87,7 @@ export default function ContactSection() {
           />
         </motion.div>
 
-        {/* Right: Contact Form */}
+        {/* Contact Form */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
