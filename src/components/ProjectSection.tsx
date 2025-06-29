@@ -24,6 +24,24 @@ const projects: Project[] = [
     codeUrl: "https://github.com/karusaini/my-intern-project",
     image: "/images/shopping.png",
   },
+
+  {
+    title: "Artistly project",
+    description:
+      "Artistly is a sleek art platform built with Next.js, Tailwind CSS, ShadCN UI, and Framer Motion, featuring smooth animations and a modern, responsive design.",
+    liveUrl: "https://artistly-rouge.vercel.app",
+    codeUrl: "https://github.com/karusaini/artistly",
+    image: "/images/artistly.png",
+  },
+  {
+    title: "Pollarbear App",
+    description:
+      "PollarBear helps users create and share real-time polls easily. Built with modern UI practices.",
+    liveUrl: "https://pollarbear-main.vercel.app/",
+    codeUrl: "https://github.com/karusaini/pollarbear",
+    image: "/images/pollarbear.png",
+  },
+
   {
     title: "Crypto-tracker",
     description:
@@ -55,14 +73,6 @@ const projects: Project[] = [
     liveUrl: "https://github-analyzer-woad.vercel.app/",
     codeUrl: "https://github.com/karusaini/github-analyzer",
     image: "/images/github.jpg",
-  },
-  {
-    title: "Pollarbear App",
-    description:
-      "PollarBear helps users create and share real-time polls easily. Built with modern UI practices.",
-    liveUrl: "https://pollarbear-main.vercel.app/",
-    codeUrl: "https://github.com/karusaini/pollarbear",
-    image: "/images/pollarbear.png",
   },
 ];
 
