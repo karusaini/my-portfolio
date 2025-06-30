@@ -33,6 +33,16 @@ const projects: Project[] = [
     codeUrl: "https://github.com/karusaini/artistly",
     image: "/images/artistly.png",
   },
+
+  {
+    title: "Therapist-Website",
+    description:
+      " Dr. Serena Blake offers compassionate, evidence-based therapy to help you manage anxiety, heal from trauma, and build emotional resilience. In-person and online sessions available.",
+    liveUrl: "https://therapist-website-ochre.vercel.app",
+    codeUrl: "https://github.com/karusaini/therapist-website",
+    image: "/images/therepist.png",
+  },
+
   {
     title: "Pollarbear App",
     description:
