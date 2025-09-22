@@ -31,7 +31,7 @@ const projects: Project[] = [
       "Responsive real estate app with dynamic listings, secure Firebase login, and smooth navigation.",
     liveUrl: "https://real-estate-app-aan7.vercel.app",
     codeUrl: "https://github.com/karusaini/real-estate-app",
-    image: "/images/estatee.png",
+    image: "/images/estate.png",
   },
 
   {
