@@ -12,12 +12,12 @@ import {
 export default function ExperiencesSection() {
   const experiences = [
     {
-      role: "Frontend Developer Intern",
-      company: "WebbyWolf",
-      companyUrl: "https://www.webbywolf.com",
-      duration: "Jul 2022 - Dec 2022",
+      role: "Frontend Developer (Learning & Projects)",
+      company: "Self-Learning & Udemy Courses",
+      companyUrl: "https://www.udemy.com/",
+      duration: "Jul 2024 - Present",
       description:
-        "Built dynamic and responsive web applications using React and Next.js. Collaborated with design and development teams to create clean, scalable, and user-friendly UI experiences.",
+        "Completed hands-on projects using React.js, Next.js, TypeScript, and Supabase. Built responsive web applications and practiced integrating designs into real-world projects, improving UI/UX skills.",
     },
     {
       role: "Freelance Web Developer",
@@ -25,7 +25,7 @@ export default function ExperiencesSection() {
       companyUrl: "https://www.fiverr.com/karina_saini",
       duration: "Jan 2023 - Present",
       description:
-        "Created real-world projects including a Zoom clone and Netflix clone. Focused on performance, code quality, and user experience. Available for freelance gigs via Fiverr.",
+        "Built responsive and user-friendly web apps using React.js, Next.js, TypeScript, and Supabase. Collaborated with clients to deliver clean, scalable, and efficient solutions.",
     },
   ];
 

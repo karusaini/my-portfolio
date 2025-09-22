@@ -6,16 +6,16 @@ import { Button } from "@/components/ui/button";
 
 const stats = [
   {
-    title: "2 Years",
-    description: "Learning Experience",
+    title: "2+ Years",
+    description: "Learning & Growing in Web Development",
   },
   {
-    title: "6 Months",
-    description: "Hands-on Experience",
+    title: "30+ Projects",
+    description: "Real Estate, Artistly, Item Listing, and more",
   },
   {
-    title: "20+ Projects",
-    description: "Zoom & Netflix Clones etc",
+    title: "Frontend Focused",
+    description: "Specializing in React, Next.js & modern tools",
   },
 ];
 
@@ -34,11 +34,13 @@ export default function AboutSection() {
           About Me
         </h2>
         <p className="mt-6 text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-left md:text-center">
-          I&apos;m a frontend developer with 2 years of learning experience and
-          6 months of hands-on experience in HTML, CSS, JavaScript, React.js,
-          Next.js, and Supabase. I&apos;ve built projects like a Zoom clone and
-          Netflix Clone, focusing on smooth, user-friendly web experiences. I
-          love building, solving, and learning every day.
+          I’m a frontend developer with 2+ years of experience in React.js,
+          Next.js, and TypeScript. I’ve built 20+ projects like a Real Estate
+          platform, Artistly app, and Item Listing app.
+          <br />
+          <br />
+          For me, coding isn’t just about features it’s about creating smooth,
+          meaningful digital experiences that people genuinely enjoy using.
         </p>
       </motion.div>
 
@@ -58,15 +60,15 @@ export default function AboutSection() {
           </CardHeader>
           <CardContent>
             <p className="mb-6 text-sm md:text-base">
-              Let&apos;s collaborate to build something exceptional. I&apos;m
-              ready to contribute to your next big idea with clean code and
-              great design.
+              Let’s collaborate and build something meaningful together. I’m
+              ready to contribute with clean code, fresh ideas, and a strong
+              focus on design and performance.
             </p>
             <div className="text-center">
               <a href="#contact">
                 <Button
                   variant="secondary"
-                  className="bg-white text-blue-700 hover:bg-gray-200"
+                  className="bg-white text-blue-700 hover:bg-gray-200 cursor-pointer"
                 >
                   Hire Me
                 </Button>
@@ -91,7 +93,6 @@ export default function AboutSection() {
                 <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                   {stat.title}
                 </h3>
-
                 <p className="mt-2 text-gray-600 dark:text-gray-300">
                   {stat.description}
                 </p>

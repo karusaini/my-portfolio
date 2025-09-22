@@ -26,6 +26,15 @@ const projects: Project[] = [
   },
 
   {
+    title: "Real Estate App",
+    description:
+      "Responsive real estate app with dynamic listings, secure Firebase login, and smooth navigation.",
+    liveUrl: "https://real-estate-app-aan7.vercel.app",
+    codeUrl: "https://github.com/karusaini/real-estate-app",
+    image: "/images/estatee.png",
+  },
+
+  {
     title: "Artistly project",
     description:
       "Artistly is a sleek art platform built with Next.js, Tailwind CSS, ShadCN UI, and Framer Motion, featuring smooth animations and a modern, responsive design.",
