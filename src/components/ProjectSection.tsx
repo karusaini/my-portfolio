@@ -49,7 +49,7 @@ const projects: Project[] = [
       "A responsive e-commerce frontend built with Next.js and Tailwind CSS featuring product listing, search, category and price filters, dynamic product pages, and cart management with localStorage persistence.",
     liveUrl: "https://whatbytes-frontend-gamma.vercel.app",
     codeUrl: "https://github.com/karusaini/whatbytes-frontend",
-    image: "/images/whatbytes-ecommercee.png",
+    image: "/images/whatbytes-ecommerce.png",
   },
 
   {
