@@ -53,6 +53,15 @@ const projects: Project[] = [
   },
 
   {
+    title: "AI Web Experience Builder",
+    description:
+      "A modern AI-powered platform designed to help developers build clean, responsive web interfaces faster.",
+    liveUrl: "https://my-ai-site-rust.vercel.app",
+    codeUrl: "https://github.com/karusaini/my-ai-site",
+    image: "/images/aero.png",
+  },
+
+  {
     title: "Therapist-Website",
     description:
       " Dr. Serena Blake offers compassionate, evidence-based therapy to help you manage anxiety, heal from trauma, and build emotional resilience. In-person and online sessions available.",
