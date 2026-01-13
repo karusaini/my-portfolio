@@ -23,7 +23,7 @@
     "keen-slider": "^6.8.6",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.475.0",
-    "next": "15.1.7",
+    "next": "^16.1.1",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
