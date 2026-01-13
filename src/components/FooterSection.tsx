@@ -68,7 +68,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Resume Button */}
           <a
             href="/images/Karina_Saini_Resume.pdf"
             download="Karina_Saini_Resume.pdf"
@@ -81,7 +80,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom Footer */}
       <div className="mt-10 text-center text-muted-foreground border-t border-border pt-4 text-sm">
         © {new Date().getFullYear()} Karina Saini. All Rights Reserved.
       </div>
