@@ -44,6 +44,15 @@ const projects: Project[] = [
   },
 
   {
+    title: "E-Commerce Product Listing App",
+    description:
+      "A responsive e-commerce frontend built with Next.js and Tailwind CSS featuring product listing, search, category and price filters, dynamic product pages, and cart management with localStorage persistence.",
+    liveUrl: "https://whatbytes-frontend-gamma.vercel.app",
+    codeUrl: "https://github.com/karusaini/whatbytes-frontend",
+    image: "/images/whatbytes-ecommercee.png",
+  },
+
+  {
     title: "Therapist-Website",
     description:
       " Dr. Serena Blake offers compassionate, evidence-based therapy to help you manage anxiety, heal from trauma, and build emotional resilience. In-person and online sessions available.",
