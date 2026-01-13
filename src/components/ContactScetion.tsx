@@ -17,6 +17,7 @@ export default function ContactSection() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -26,6 +27,7 @@ export default function ContactSection() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     const templateParams = {
       name: formData.name,
@@ -35,24 +37,24 @@ export default function ContactSection() {
 
     try {
       const result = await emailjs.send(
-        "service_9xtgyba",
-        "template_j91osq3",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         templateParams,
-        "xMXXAB6Gc1GWTKiOo"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
       if (result.text === "OK") {
         setSubmitted(true);
-        setTimeout(() => {
-          setSubmitted(false);
-          setFormData({ name: "", email: "", message: "" });
-        }, 3000);
+        setFormData({ name: "", email: "", message: "" });
+        setTimeout(() => setSubmitted(false), 3000);
       } else {
-        alert("Failed to send message.");
+        alert("Failed to send message. Please try again.");
       }
     } catch (err) {
       console.error("EmailJS Error:", err);
-      alert("Something went wrong.");
+      alert("Something went wrong. Please check your EmailJS setup.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -132,8 +134,13 @@ export default function ContactSection() {
             <Button
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              disabled={loading}
             >
-              {submitted ? "Message Sent!" : "Send Message"}
+              {loading
+                ? "Sending..."
+                : submitted
+                ? "Message Sent!"
+                : "Send Message"}
             </Button>
           </form>
         </motion.div>
