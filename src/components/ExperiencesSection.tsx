@@ -30,53 +30,63 @@ export default function ExperiencesSection() {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
-      {/* Section Heading */}
+    <section
+      id="experience"
+      className="relative py-24 px-6 max-w-6xl mx-auto overflow-hidden"
+    >
+      {/* Luxury Glow Background */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10" />
+
+      {/* Heading */}
       <motion.div
-        className="max-w-5xl mx-auto text-center"
+        className="text-center mb-16"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
           Experience
         </h2>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+
+        <p className="mt-6 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed text-base md:text-lg">
           My professional journey so far
         </p>
       </motion.div>
 
-      {/* Experience Cards */}
-      <div className="mt-12 max-w-5xl mx-auto space-y-6">
+      {/* Cards */}
+      <div className="space-y-8">
         {experiences.map((exp, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            whileHover={{ scale: 1.015 }}
+            transition={{ duration: 0.6, delay: index * 0.15 }}
           >
-            <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300">
+            <Card className="rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-[0_10px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_15px_40px_rgba(0,0,0,0.1)] transition-all duration-300 bg-white dark:bg-zinc-900">
               <CardHeader>
-                <CardTitle className="text-xl text-blue-600 dark:text-blue-400">
+                <CardTitle className="text-xl md:text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                   {exp.role}
                 </CardTitle>
-                <CardDescription className="text-md text-gray-600 dark:text-gray-300">
+
+                <CardDescription className="mt-2 text-gray-600 dark:text-gray-400">
                   <a
                     href={exp.companyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:underline font-medium"
+                    className="font-medium hover:underline"
                   >
                     {exp.company}
                   </a>{" "}
-                  • <span className="text-sm">{exp.duration}</span>
+                  <span className="mx-2">•</span>
+                  <span className="text-sm">{exp.duration}</span>
                 </CardDescription>
               </CardHeader>
+
               <CardContent>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {exp.description}
                 </p>
               </CardContent>

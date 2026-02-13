@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import Lottie from "lottie-react";
-import animationData from "../../public/lotties/contact.json";
+import animationData from "@/lotties/contact.json";
 import emailjs from "@emailjs/browser";
 
 export default function ContactSection() {
@@ -20,7 +20,7 @@ export default function ContactSection() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -40,7 +40,7 @@ export default function ContactSection() {
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
       );
 
       if (result.text === "OK") {
@@ -59,21 +59,31 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 bg-background">
+    <section
+      id="contact"
+      className="relative py-24 px-6 max-w-6xl mx-auto overflow-hidden"
+    >
+      {/* Glow Corners */}
+      <div className="absolute -top-16 -left-16 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute -bottom-16 -right-16 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10" />
+
+      {/* Header */}
       <motion.div
-        className="text-center max-w-3xl mx-auto"
-        initial={{ opacity: 0, y: 20 }}
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
       >
-        <h2 className="text-4xl font-bold text-foreground">Contact Me</h2>
-        <p className="text-muted-foreground mt-4 text-lg">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
+          Contact Me
+        </h2>
+        <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed text-base md:text-lg">
           Let’s get in touch. I usually reply within 24 hours.
         </p>
       </motion.div>
 
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Lottie Animation */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -95,7 +105,10 @@ export default function ContactSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6 bg-white dark:bg-zinc-900 rounded-2xl p-8  dark:shadow-none"
+          >
             <div>
               <Label htmlFor="name">Name</Label>
               <Input
@@ -105,6 +118,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 placeholder="Your name"
                 required
+                className="rounded-lg focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
               />
             </div>
             <div>
@@ -117,6 +131,7 @@ export default function ContactSection() {
                 onChange={handleChange}
                 placeholder="you@example.com"
                 required
+                className="rounded-lg focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
               />
             </div>
             <div>
@@ -129,18 +144,22 @@ export default function ContactSection() {
                 onChange={handleChange}
                 placeholder="Write your message..."
                 required
+                className="rounded-lg focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400"
               />
             </div>
+
             <Button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white"
               disabled={loading}
+              className="w-full rounded-xl px-6 py-6 bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800
+             text-white font-medium transition-transform duration-300 ease-in-out
+             hover:-translate-y-1 hover:scale-105"
             >
               {loading
                 ? "Sending..."
                 : submitted
-                ? "Message Sent!"
-                : "Send Message"}
+                  ? "Message Sent!"
+                  : "Send Message"}
             </Button>
           </form>
         </motion.div>

@@ -102,51 +102,76 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section id="skills" className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+    <section
+      id="skills"
+      className="relative py-24 px-6 max-w-6xl mx-auto overflow-hidden"
+    >
+      {/* Luxury Glow Background */}
+      <div className="absolute -top-20 -left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute -bottom-20 -right-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl -z-10" />
+
       {/* Header */}
       <motion.div
-        className="max-w-5xl mx-auto text-center"
+        className="text-center mb-16"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
           Skills
         </h2>
-        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
-          Technologies I&apos;ve worked with
+
+        <p className="mt-6 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed text-base md:text-lg">
+          Technologies I’ve worked with
         </p>
       </motion.div>
 
       {/* Grid */}
-      <div className="max-w-6xl mx-auto mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
         {skills.map((skill, index) => (
-          <motion.a
+          <motion.div
             key={index}
-            href={skill.url}
-            target="_blank"
-            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            whileHover={{ scale: 1.06 }}
+            transition={{ duration: 0.6, delay: index * 0.07 }}
+            className="group"
           >
-            <Card className="bg-white dark:bg-gray-800 transition-transform shadow-md hover:shadow-xl">
-              <CardHeader className="flex flex-col items-center gap-2">
-                {skill.icon}
-              </CardHeader>
-              <CardContent className="text-center">
-                <CardTitle className="text-lg font-semibold text-gray-800 dark:text-gray-200">
-                  {skill.name}
-                </CardTitle>
-                <CardDescription className="text-sm text-gray-500 dark:text-gray-400">
-                  {skill.level}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          </motion.a>
+            {/* Gradient Border Wrapper */}
+            <a
+              href={skill.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div
+                className="relative rounded-2xl p-[1px] transition-all duration-500
+                bg-transparent
+                group-hover:bg-gradient-to-r
+                group-hover:from-purple-500
+                group-hover:via-blue-500
+                group-hover:to-pink-500
+                group-hover:shadow-[0_0_40px_rgba(168,85,247,0.25)]"
+              >
+                <Card className="rounded-2xl bg-white dark:bg-zinc-900 h-full">
+                  <CardHeader className="flex flex-col items-center gap-3 pt-6">
+                    {skill.icon}
+                  </CardHeader>
+
+                  <CardContent className="text-center pb-6">
+                    <CardTitle className="text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
+                      {skill.name}
+                    </CardTitle>
+
+                    <CardDescription className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                      {skill.level}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </div>
+            </a>
+          </motion.div>
         ))}
       </div>
     </section>
