@@ -5,17 +5,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const stats = [
+  { title: "2+ Years", description: "Crafting modern web experiences" },
+  { title: "30+ Projects", description: "Full-stack & frontend apps" },
+
   {
-    title: "2+ Years",
-    description: "Learning & Growing in Web Development",
-  },
-  {
-    title: "30+ Projects",
-    description: "Real Estate, Artistly, Item Listing, and more",
-  },
-  {
-    title: "Frontend Focused",
-    description: "Specializing in React, Next.js & modern tools",
+    title: "Full-Stack Dev",
+    description: "React, Next.js, Node & Modern Tools",
   },
 ];
 
@@ -40,15 +35,16 @@ export default function AboutSection() {
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-gray-900 to-gray-500 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">
           About Me
         </h2>
-
         <p className="mt-8 text-gray-600 dark:text-gray-300 leading-relaxed text-base md:text-lg">
-          I’m a frontend developer with 2+ years of experience in React.js,
-          Next.js, and TypeScript. I’ve built multiple real-world projects
-          including a Real Estate platform, Artistly app, and Item Listing app.
+          I build modern web experiences as a full-stack developer, with a
+          strong focus on frontend design and user experience. Over 2+ years,
+          I’ve delivered projects ranging from dynamic Real Estate platforms to
+          sleek Artistly and Item Listing apps.
           <br />
+          <br />I combine clean, scalable code with smooth and intuitive UI,
+          ensuring every project is both functional and delightful for users.
           <br />
-          For me, coding isn’t just about features — it’s about creating smooth,
-          meaningful digital experiences that people genuinely enjoy using.
+          Let’s create impactful digital experiences together.
         </p>
       </motion.div>
 
@@ -72,15 +68,15 @@ export default function AboutSection() {
           <Card className="rounded-2xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl transition-all duration-300 group-hover:-translate-y-1">
             <CardHeader>
               <CardTitle className="text-2xl font-semibold tracking-tight text-black">
-                Looking for a Creative Frontend Developer?
+                Full-Stack Developer | Frontend Specialist
               </CardTitle>
             </CardHeader>
 
             <CardContent>
               <p className="mb-8 text-gray-600 dark:text-gray-300 leading-relaxed">
-                Let’s collaborate and build something meaningful together. I’m
-                ready to contribute with clean code, fresh ideas, and a strong
-                focus on design and performance.
+                Full-Stack Developer with a strong frontend focus. I build
+                clean, responsive web apps that are both functional and visually
+                engaging.
               </p>
 
               <div className="text-center">
