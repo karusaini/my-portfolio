@@ -12,12 +12,12 @@ import {
 export default function ExperiencesSection() {
   const experiences = [
     {
-      role: "Frontend Developer (Learning & Projects)",
-      company: "Self-Learning & Udemy Courses",
+      role: "Full-Stack Developer & Software Engineer",
+      company: "Self-Learning & Udemy Projects",
       companyUrl: "https://www.udemy.com/",
       duration: "Jul 2024 - Present",
       description:
-        "Completed hands-on projects using React.js, Next.js, TypeScript, and Supabase. Built responsive web applications and practiced integrating designs into real-world projects, improving UI/UX skills.",
+        "Built responsive web applications using React.js, Next.js, Node.js, TypeScript, and Supabase. Focused on both frontend and backend integration, creating full-stack solutions and improving UI/UX design skills.",
     },
     {
       role: "Freelance Web Developer",
@@ -25,7 +25,7 @@ export default function ExperiencesSection() {
       companyUrl: "https://www.fiverr.com/karina_saini",
       duration: "Jan 2023 - Present",
       description:
-        "Built responsive and user-friendly web apps using React.js, Next.js, TypeScript, and Supabase. Collaborated with clients to deliver clean, scalable, and efficient solutions.",
+        "Delivered full-stack web apps for clients using React, Next.js, Node.js, and Supabase. Balanced frontend design with backend functionality to provide clean, scalable, and performant solutions.",
     },
   ];
 
