@@ -98,6 +98,24 @@ const projects: Project[] = [
     image: "/images/skincare.png",
     tech: ["Next.js", "Figma", "Tailwind"],
   },
+
+  {
+    title: "IELTS Institute Landing Page",
+    description:
+      "Responsive IELTS landing page with smooth animations and interactive UI.",
+    liveUrl: "https://ielts-institute-homepage-mu.vercel.app",
+    codeUrl: "https://github.com/karusaini/ielts-institute-homepage",
+    image: "/images/ielts.png",
+    tech: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "TailwindCSS",
+      "ShadCN UI",
+      "Framer Motion",
+    ],
+  },
+
   {
     title: "Car Finder Website",
     description:
