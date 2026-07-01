@@ -23,7 +23,7 @@ export async function POST(req: Request) {
           template_params: {
             user_name: name,
             user_email: email,
-            message,
+            message: message,
           },
         }),
       },
